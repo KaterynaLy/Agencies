@@ -1,410 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real Estate Projects - Premium Developments</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Helvetica', Arial, sans-serif;
-            background: #eeeae7;
-            min-height: 100vh;
-            padding: 20px;
-        }
+      body {
+        font-family: "Helvetica", Arial, sans-serif;
+        background: #eeeae7;
+        min-height: 100vh;
+        padding: 20px;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            overflow: hidden;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+      }
 
-        .header {
-            background: #80664f;
-            color: white;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-        }
+      .header {
+        background: #80664f;
+        color: white;
+        padding: 40px;
+        text-align: center;
+        position: relative;
+      }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+      }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
 
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
+      .header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
 
-        .content {
-            padding: 40px;
-        }
+      .content {
+        padding: 40px;
+      }
 
-        .location-section {
-            margin-bottom: 50px;
-        }
+      .location-section {
+        margin-bottom: 50px;
+      }
 
-        .location-title {
-            font-size: 2rem;
-            color: #80664f;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #80664f;
-            position: relative;
-        }
+      .location-title {
+        font-size: 2rem;
+        color: #80664f;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #80664f;
+        position: relative;
+      }
 
-        .location-title::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: #95785e;
-        }
+      .location-title::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #95785e;
+      }
 
-        .project-grid {
-            display: grid;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
+      .project-grid {
+        display: grid;
+        gap: 25px;
+        margin-bottom: 30px;
+      }
 
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(128, 102, 79, 0.1);
-            border-left: 5px solid #80664f;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+      .project-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .project-content {
+        flex: 1;
+        padding-right: 30px; /* Añade espacio entre el texto y la imagen */
+      }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: #80664f;
-            border-radius: 0 0 0 100px;
-            opacity: 0.1;
-        }
+      .project-description,
+      .additional-info {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.5;
+      }
+      .project-image img {
+        width: 250px;
+        border-radius: 10px;
+      }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(128, 102, 79, 0.15);
-        }
+      .project-image img {
+        width: 100%;
+        max-width: 600px; /* Puedes ajustar este valor según tu diseño */
+        border-radius: 15px;
+        object-fit: cover;
+      }
 
-        .project-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #80664f;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: #80664f;
+        border-radius: 0 0 0 100px;
+        opacity: 0.1;
+      }
 
-        .commission-badge {
-            background: #80664f;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(128, 102, 79, 0.3);
-        }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(128, 102, 79, 0.15);
+      }
 
-        .special-offer {
-            background: #95785e;
-        }
+      .project-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #80664f;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
+      .commission-badge {
+        background: #80664f;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(128, 102, 79, 0.3);
+      }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            background: #eeeae7;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
+      .special-offer {
+        background: #95785e;
+      }
 
-        .contact-item:hover {
-            background: #95785e;
-            color: white;
-        }
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
 
-        .contact-item:hover a {
-            color: white;
-        }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: #eeeae7;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+      }
 
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            background: #80664f;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-        }
+      .contact-item:hover {
+        background: #95785e;
+        color: white;
+      }
 
-        .contact-item a {
-            color: #80664f;
-            text-decoration: none;
-            font-weight: 500;
-        }
+      .contact-item:hover a {
+        color: white;
+      }
 
-        .contact-item a:hover {
-            color: #95785e;
-        }
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+        background: #80664f;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+      }
 
-        .special-note {
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            font-weight: 500;
-        }
+      .contact-item a {
+        color: #80664f;
+        text-decoration: none;
+        font-weight: 500;
+      }
 
-        .footer-note {
-            background: #80664f;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
+      .contact-item a:hover {
+        color: #95785e;
+      }
 
-        .status-ready {
-            background: #80664f;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        
-        button {
+      .special-note {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        font-weight: 500;
+      }
+
+      .footer-note {
+        background: #80664f;
+        color: white;
+        padding: 30px;
+        text-align: center;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .status-ready {
+        background: #80664f;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      button {
         padding: 10px 20px;
         font-size: 16px;
         margin: 20px;
         cursor: pointer;
-        }
-  
+      }
+      .download-section {
+        margin-top: 15px;
+        font-size: 1rem;
+        color: #80664f;
+      }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .project-card {
-                padding: 20px;
-            }
-            
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
+      .download-button {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 10px 15px;
+        background-color: #80664f;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s ease;
+      }
+
+      .download-button:hover {
+        background-color: #95785e;
+      }
+
+      @media (max-width: 768px) {
+        .project-card {
+          grid-template-columns: 1fr;
         }
+
+        .project-image img {
+          max-width: 100%;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
+      <div class="header">
             <h1>🏖️ Premium Real Estate Developments</h1>
             <p>Exclusive Properties on the Costa del Sol</p>
-        </div>
-        <h1>Bienvenida a Agencies</h1>
-        <p>Este es el contenido de tu página web.</p>
+      </div>
 
-        <!-- Botón para guardar como PDF -->
-        <button onclick="window.print()">🖨️ Guardar como PDF</button>
+      <h1>Bienvenida a Agencies</h1>
+      <p>Este es el contenido de tu página web.</p>
+
+      <button onclick="window.print()">🖨️ Guardar como PDF</button>
 
         <div class="content">
-            <!-- NEW GOLDEN MILE ESTEPONA -->
+            <!-- SECCIÓN DE UBICACIONES -->
             <div class="location-section">
-                <h2 class="location-title">NEW GOLDEN MILE ESTEPONA</h2>
-                
-                <div class="project-grid">
-                    <!-- Balcón del Mediterráneo -->
-                    <div class="project-card">
-                        <div class="project-name">
-                            Balcón del Mediterráneo
-                            <span class="commission-badge">6% Commission</span>
-                        </div>
-                        
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">📧</div>
-                                <a href="mailto:balcon@gilmar.es">balcon@gilmar.es</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📱</div>
-                                <a href="tel:+34638965257">+34 638 96 52 57 (Gumer)</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">🏢</div>
-                                <a href="https://maps.app.goo.gl/yZUbKzF3aULmVoMR8" target="_blank">Sales Office Location</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">🏗️</div>
-                                <a href="https://maps.app.goo.gl/f9THDX4J5N6jM7oT7" target="_blank">Project Location</a>
-                            </div>
-                        </div>
+            <h2 class="location-title">NEW GOLDEN MILE ESTEPONA</h2>
+            <div class="project-grid">
+            <!-- Balcón del Mediterráneo -->
+            <div class="project-card">
+              <div class="project-content">
+                    <div class="project-name">
+                    Balcón del Mediterráneo
+                    <span class="commission-badge">6% Commission</span>
                     </div>
 
-                   <!-- Altoasis -->
-                  <div class="project-card">
-                      <div class="project-name">
-                          Altoasis
-                          <span class="commission-badge special-offer">10% First 10 Properties Sold</span>
-                      </div>
-                      
-                      <div class="contact-info">
-                          <div class="contact-item">
-                              <div class="contact-icon">📧</div>
-                              <a href="mailto:altoasis@gilmar.es">altoasis@gilmar.es</a>
-                          </div>
-                          <div class="contact-item">
-                              <div class="contact-icon">📱</div>
-                              <a href="tel:+34681946997">+34 681 94 69 97 (Paola)</a>
-                          </div>
-                          <div class="contact-item">
-                              <div class="contact-icon">🏢</div>
-                              <a href="https://maps.app.goo.gl/SFdcJ9VHkG9y4fLm6" target="_blank">Sales Office Location</a>
-                          </div>
-                      </div>
-                      
-                      <div class="status-ready">
-                          🔑 Development Finished - Key Ready
-                      </div>
+                    <div class="project-description">
+                    This exclusive luxury residential project is located on the
+                    highly sought‑after New Golden Mile in Estepona. It offers 3‑,
+                    4‑, and 5‑bedroom apartments, with sizes ranging between 200
+                    and 300 m². Each residence includes two parking spaces. The
+                    spacious terraces provide panoramic views of the sea and
+                    mountains, featuring an architectural design that aims to
+                    integrate nature and Mediterranean light.
+                    </div>
+
+                    <div class="additional-info">
+                    💰 Prices start from €1,258,290<br />
+                    📅 Estimated Delivery: Q3–Q4 2026 (under construction)
+                    </div>
+                    <div class="download-section">
+                    📄 <strong>Payment Plan:</strong>
+                    <a
+                        href="https://gilmar1-my.sharepoint.com/shared?listurl=https%3A%2F%2Fgilmar1%2Esharepoint%2Ecom%2Fsites%2Fdocs%2Foficinas%2Foc00pc%2FEquipo&login_hint=promociones%2Ecosta%40gilmar%2Ees&source=waffle&id=%2Fsites%2Fdocs%2Foficinas%2Foc00pc%2FEquipo%2F2%2E%20PROMOCIONES%20EN%20CURSO%2F1%2E%20BALC%C3%93N%20DEL%20MEDITERR%C3%81NEO%2F8%2E%20PRECIOS%20APROBADOS%2F2%2E%20Forma%20de%20Pago%2FPayment%20Terms%20%2D%20Balc%C3%B3n%20del%20Mediterr%C3%A1neo%5F052025%2Epdf&parent=%2Fsites%2Fdocs%2Foficinas%2Foc00pc%2FEquipo%2F2%2E%20PROMOCIONES%20EN%20CURSO%2F1%2E%20BALC%C3%93N%20DEL%20MEDITERR%C3%81NEO%2F8%2E%20PRECIOS%20APROBADOS%2F2%2E%20Forma%20de%20Pago"
+                        target="_blank"
+                        class="download-button"
+                    >
+                        Click here to download PDF
+                    </a>
+                    </div>
+              </div>
+
+              <div class="project-image">
+                <img
+                  src="/docs/images/balcon_pic.jpg"
+                  alt="Balcón del Mediterráneo"
+                />
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <a href="mailto:balcon@gilmar.es">balcon@gilmar.es</a>
                   </div>
-
-                    <!-- Portamare -->
-                    <div class="project-card">
-                        <div class="project-name">
-                            Portamare
-                            <span class="commission-badge">5% Commission</span>
-                        </div>
-                        
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">📧</div>
-                                <a href="mailto:portamare@gilmar.es">portamare@gilmar.es</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📱</div>
-                                <a href="tel:+34638965257">638 965 257 (Ormody Luke)</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <a href="https://maps.app.goo.gl/E6gqTdBBQbZE1ipr5" target="_blank">Project Location</a>
-                            </div>
-                        </div>
-                    </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <a href="tel:+34629251395">+34 629 25 13 95</a>
+                  </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <a
+                      href="https://maps.app.goo.gl/yZUbKzF3aULmVoMR8"
+                      target="_blank"
+                      >Sales Office</a
+                    >
+                  </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">🏗️</div>
+                    <a
+                      href="https://maps.app.goo.gl/f9THDX4J5N6jM7oT7"
+                      target="_blank"
+                      >Project Location</a
+                    >
+                  </div>
                 </div>
+              </div>
             </div>
 
-            <!-- MÁLAGA – EL LIMONAR -->
-            <div class="location-section">
-                <h2 class="location-title">MÁLAGA – EL LIMONAR</h2>
-                
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-name">
-                            Be Grand El Limonar
-                            <span class="commission-badge">4% Commission</span>
-                        </div>
-                        
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">📧</div>
-                                <a href="mailto:begrandlimonar@gilmar.es">begrandlimonar@gilmar.es</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📱</div>
-                                <a href="tel:+34652138396">+34 652 13 83 96 (Alina)</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <a href="https://g.co/kgs/iBAu3HP" target="_blank">Project Location</a>
-                            </div>
-                        </div>
+            <!-- Altoasis Residences -->
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-name">
+                    Altoasis
+                    <span class="commission-badge special-offer"
+                        >10% First 10 Properties Sold</span
+                    >
                     </div>
+
+                <div class="status-ready">
+                  🔑 Development Finished - Key Ready
                 </div>
+
+                <div class="project-description">
+                  Welcome to Altoasis Residences, your new home on the Costa del
+                  Sol. This exclusive development comprises 87 ready-to-move-in
+                  townhouses, located in the west area of Estepona, next to the
+                  new High Resolution Hospital and in a frontline golf course
+                  location.
+                  <br /><br />
+                  These homes are arranged over two floors plus a basement and
+                  include three bedrooms and two bathrooms, with private
+                  terraces and, in some cases, a solarium boasting impressive
+                  sea and golf views. Inspired by modern Mediterranean
+                  architecture, they feature marble flooring, double-glazed
+                  windows, electric blinds, and a hydro‑massage bathtub for
+                  comfort and wellbeing.
+                  <br /><br />
+                  The residential complex offers exclusive communal amenities
+                  such as indoor and outdoor swimming pools, a spa, a gym, and
+                  landscaped gardens that promote harmony and relaxation. The
+                  entire development has been fully renovated both inside and
+                  out to deliver quality, elegance, and functionality.
+                </div>
+
+                <div class="additional-info">
+                  💰 Prices start from €405,000<br />
+                  📅 Estimated Delivery: Homes are ready for immediate handover,
+                  according to the official project listing.
+                </div>
+
+                <div class="download-section">
+                  📄 <strong>Payment Plan:</strong>
+                  <a
+                    href="/docs/pdfs/payment-plan-altoasis.pdf"
+                    target="_blank"
+                    class="download-button"
+                  >
+                    Click here to download PDF
+                  </a>
+                </div>
+              </div>
+
+              <div class="project-image">
+                <img
+                  src="/docs/images/altoaisis_pic.jpg"
+                  alt="Altoasis Residences"
+                />
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <a href="mailto:altoasis@gilmar.es">altoasis@gilmar.es</a>
+                  </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <a href="tel:+34629251395">+34 629 25 13 95</a>
+                  </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <a
+                      href="https://maps.app.goo.gl/SFdcJ9VHkG9y4fLm6"
+                      target="_blank"
+                      >Sales Office</a
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- CASARES -->
-            <div class="location-section">
-                <h2 class="location-title">CASARES</h2>
-                
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-name">
-                            Casares Bay
-                            <span class="commission-badge special-offer">7% First 2 Units</span>
-                        </div>
-                        
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">📧</div>
-                                <a href="mailto:casares.bay@gilmar.es">casares.bay@gilmar.es</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📱</div>
-                                <a href="tel:+34638965257">638 965 257 (Ormody Luke)</a>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <a href="https://maps.app.goo.gl/knPAhkqUVkctWn8h7" target="_blank">Project Location</a>
-                            </div>
-                        </div>
+           <!-- Portamare -->
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-name">
+                        Portamare
+                        <span class="commission-badge">5% Commission</span>
                     </div>
+        
+                <div class="project-description">
+                    Welcome to Portamare, a boutique residential development in Estepona’s historic center—just 100 m from the beach and marina. The project includes 22 apartments of 2 and 3 bedrooms, plus duplex and triplex penthouses with spacious terraces offering views of the Mediterranean, Gibraltar, and North Africa. Each unit comes with underground parking. Shared amenities include a rooftop pool & solarium. High‑end finishes and contemporary design throughout.
                 </div>
+        
+                <div class="additional-info">
+                    📊 <strong>Key Details:</strong><br>
+                    • Units: 22 (2‑ and 3‑bedrooms; plus duplex/triplex penthouses)<br>
+                    • Price from: Approx. €439,700 (2 bedrooms)<br>
+                    • Views: Mediterranean Sea, Gibraltar, African coast<br>
+                    • Parking: Underground parking included<br>
+                    • Common areas: Rooftop swimming pool & solarium<br>
+                    • Location: ~100 m from Estepona beach & port
+                    <br><br>
+                    📅 <strong>Estimated Delivery:</strong> Q1 2027 (official), with some listings mentioning early Q2 2027
+                </div>
+        
+                <div class="download-section">
+                    📄 <strong>Payment Plan:</strong>
+                    <a href="/docs/pdfs/payment-plan-portamare.pdf" target="_blank" class="download-button">
+                    Click here to download PDF
+                    </a>
+                </div>
+                </div>
+        
+            <div class="project-image">
+            <img src="/docs/images/portamare_pic.JPG" alt="Portamare" />
+            <div class="contact-info">
+                <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <a href="mailto:portamare@gilmar.es">portamare@gilmar.es</a>
+                </div>
+                <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <a href="tel:+34638965257">638 96 52 57</a>
+                </div>
+                <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <a href="https://maps.app.goo.gl/E6gqTdBBQbZE1ipr5" target="_blank">Project Location</a>
+                </div>
+            </div>
+            </div>
+            </div>
+        
+
+           <!-- Be Grand El Limonar -->
+            <div class="project-card">
+            <div class="project-content">
+            <div class="project-name">
+                Be Grand El Limonar
+                <span class="commission-badge">4% Commission</span>
+            </div>
+        
+            <div class="project-description">
+                Welcome to Be Grand El Limonar, an exclusive luxury residential complex in Málaga’s prestigious El Limonar neighborhood, just 200 meters from the beach and 10 minutes from the historic center. The development comprises 18 luxury homes, distributed across four buildings: two restored early-20th-century palaces (<em>Alcazaba</em> and <em>Teatro Romano</em>), and two contemporary structures (<em>Catedral</em> and <em>Muelle Uno</em>).
+                <br><br>
+                Units range from 1 to 4 bedrooms, with interiors and terraces totalling ~2,500 m² plus ~795 m² of outdoor space. Prices start from around €500,000 for one‑bedroom apartments (approx. 70 m²), rising up to €3–3.5 million for the most exclusive residences.
+                <br><br>
+                The project offers two panoramic pools (one with jacuzzi), a fully equipped gym, rooftop chill‑out area, coworking/event space, and underground parking with electric charging stations. Emphasis is placed on sustainable, bioclimatic design, east‑west orientation, and high‑efficiency materials.
+            </div>
+        
+            <div class="additional-info">
+                📊 <strong>Key Features:</strong><br>
+                • 2 panoramic pools (one with jacuzzi)<br>
+                • Gym, rooftop chill‑out, coworking/event space<br>
+                • 19 underground parking spaces with electric charging<br>
+                • Sea views and bioclimatic architecture<br>
+                • Fusion of historical restoration and modern design
+                <br><br>
+                📅 <strong>Estimated Delivery:</strong> To be confirmed depending on building phase
+            </div>
+        
+            <div class="download-section">
+                📄 <strong>Payment Plan:</strong>
+                <a href="/docs/pdfs/payment-plan-begrand.pdf" target="_blank" class="download-button">
+                Click here to download PDF
+                </a>
+            </div>
+            </div>
+        
+            <div class="project-image">
+            <img src="/docs/images/be_grand_pic.jpg" alt="Be Grand El Limonar" />
+            <div class="contact-info">
+                <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <a href="mailto:begrandlimonar@gilmar.es">begrandlimonar@gilmar.es</a>
+                </div>
+                <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <a href="tel:+34652138396">+34 652 13 83 96</a>
+                </div>
+                <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <a href="https://g.co/kgs/iBAu3HP" target="_blank">Project Location</a>
+                </div>
+            </div>
+            </div>
+            </div>
+        <!-- Casares Bay -->
+            <div class="project-card">
+            <div class="project-content">
+                <div class="project-name">
+                    Casares Bay
+                    <span class="commission-badge special-offer">7% First 2 Units</span>
+                </div>
+        
+            <div class="project-description">
+                Welcome to Casares Bay, a boutique residential development offering just nine exclusive homes nestled between Estepona and Casares, adjacent to Doña Julia Golf. The collection includes ground-floor apartments with private gardens, as well as spacious 2‑ and 3‑bedroom duplexes and penthouses, all featuring generous terraces with Mediterranean views.
+                <br><br>
+                Each unit includes private underground parking and a storage room. The community features a large shared swimming pool, rooftop solarium, landscaped gardens, and a tranquil setting just a short walk from the beach.
+            </div>
+        
+            <div class="additional-info">
+                📊 <strong>Key Details:</strong><br>
+                • Units: 9 exclusive homes (2–3 bedroom apartments, duplexes, and penthouses)<br>
+                • Sizes: ~99–136 m² built + terraces/gardens (e.g. 103 m² + 20 m² terrace)<br>
+                • Prices: from €370,000 depending on size and floor<br>
+                • Views: Mediterranean Sea, golf course, natural surroundings<br>
+                • Common areas: Pool, rooftop solarium, landscaped gardens<br>
+                • Location: Casares (Málaga), 5 min walk to the beach
+                <br><br>
+                📅 <strong>Estimated Delivery:</strong> Q1 2027 
+            </div>
+        
+            <div class="download-section">
+                📄 <strong>Payment Plan:</strong>
+                <a href="/docs/pdfs/payment-plan-casaresbay.pdf" target="_blank" class="download-button">
+                Click here to download PDF
+                </a>
+            </div>
+            </div>
+        
+            <div class="project-image">
+            <img src="/docs/images/casares_pic.jpg" alt="Casares Bay" />
+            <div class="contact-info">
+                <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <a href="mailto:casares.bay@gilmar.es">casares.bay@gilmar.es</a>
+                </div>
+                <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <a href="tel:+34638965257">638 96 52 57</a>
+                </div>
+                <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <a href="https://maps.app.goo.gl/knPAhkqUVkctWn8h7" target="_blank">Project Location</a>
+                </div>
+            </div>
+            </div>
             </div>
         </div>
-             <div class="footer-note">
-          📁 Complete documentation available: Updated price lists, payment terms, renders, floor plans, dossiers, etc.<br>
-          🎨 Customization option: Add your logo and contact details to all materials<br>
-          🔗 <a href="https://gilmaroffplan.example.com" target="_blank" style="color: #f39c12; text-decoration: underline;">Gilmar Off Plan</a>
-      </div>
-</body>
+            <div class="footer-note">
+            📁 Documentación completa disponible: Listados de precios, condiciones
+            de pago, renders, planos, dosieres, etc.<br />
+            🎨 Opción de personalización: Añade tu logo y datos de contacto a todos
+            los materiales<br />
+            🔗
+            <a
+            href="https://agencias.gilmar.es/cms/login"
+            target="_blank"
+            style="color: #f39c12; text-decoration: underline"
+            >Gilmar Off Plan</a
+            >
+            </div>
+        </div>
+    </div>  
+  </body>
 </html>
